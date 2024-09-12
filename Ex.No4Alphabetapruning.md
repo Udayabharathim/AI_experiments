@@ -1,6 +1,6 @@
 # Ex.No: 4   Implementation of Alpha Beta Pruning 
-### DATE:                                                                            
-### REGISTER NUMBER : 
+### DATE:  12/09/2024                                                                     
+### REGISTER NUMBER : 212222060281
 ### AIM: 
 Write a Alpha beta pruning algorithm to find the optimal value of MAX Player from the given graph.
 ### Steps:
@@ -16,6 +16,46 @@ Write a Alpha beta pruning algorithm to find the optimal value of MAX Player fro
 
 ### Program:
 
+#Define a large negative and positive value to represent infinity<br/>
+INF = float('inf')<br/>
+
+#Alpha-Beta Pruning function<br/>
+def alpha_beta_pruning(depth, node_index, maximizing_player, values, alpha, beta):<br/>
+    # Base case: leaf node is reached<br/>
+    if depth == 3:<br/>
+        return values[node_index]<br/>
+    
+    if maximizing_player:<br/>
+        max_eval = -INF<br/>
+        # Recur for the two children of the current node<br/>
+        for i in range(2):<br/>
+            eval = alpha_beta_pruning(depth + 1, node_index * 2 + i, False, values, alpha, beta)<br/>
+            max_eval = max(max_eval, eval)<br/>
+            alpha = max(alpha, eval)<br/>
+            
+            # Prune the branch<br/>
+            if beta <= alpha:<br/>
+                break<br/>
+        return max_eval<br/>
+    else:<br/>
+        min_eval = INF<br/>
+        # Recur for the two children of the current node<br/>
+        for i in range(2):<br/>
+            eval = alpha_beta_pruning(depth + 1, node_index * 2 + i, True, values, alpha, beta)<br/>
+            min_eval = min(min_eval, eval)<br/>
+            beta = min(beta, eval)<br/>
+            
+            # Prune the branch<br/>
+            if beta <= alpha:<br/>
+                break<br/>
+        return min_eval<br/>
+
+#Driver code<br/>
+if __name__ == "__main__":<br/>
+    # This is the terminal/leaf node values of the game tree<br/>
+    values = [3, 5, 6, 9, 1, 2, 0, -1]<br/>
+
+    print("Optimal value:", alpha_beta_pruning(0, 0, True, values, -INF, INF))<br/>
 
 
 
@@ -28,6 +68,7 @@ Write a Alpha beta pruning algorithm to find the optimal value of MAX Player fro
 
 ### Output:
 
+![image](https://github.com/user-attachments/assets/2fec98fc-6716-4206-b29e-33ed00854511)
 
 
 ### Result:
