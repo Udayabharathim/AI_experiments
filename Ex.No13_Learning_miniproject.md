@@ -2,8 +2,21 @@
 ## DATE: 12/10/2024                                                                            
 ## REGISTER NUMBER : 212222060281
 ## AIM: 
-To write a program to train the classifier for Prediction of PCOS
+To create a ML model using python to predict PCOS using Randomforest classifier.
 ##  Algorithm:
+1. Load and Prepare Data: Load the CSV file, check for missing values, and impute them using the mean strategy.<br>
+
+2. Set Features and Target: Define X (features) and y (target, indicating PCOS diagnosis).<br>
+
+3. Split and Standardize: Split data into training and test sets; standardize the feature values using StandardScaler.<br>
+
+4. Train the Model: Use a RandomForestClassifier to train the model on the training set.<br>
+
+5. Evaluate: Predict on the test set and evaluate the model's accuracy.<br>
+
+6. Chatbot Interface: Define a function to collect user inputs for each feature, including special handling for blood group values.<br>
+
+7. Predict and Display Result: Preprocess user input, make a prediction, and display the result to the user.<br>
 
 ## Program:
 ```
@@ -110,4 +123,4 @@ pcos_chatbot()
 
 
 ## Result:
-Thus the system was trained successfully and the prediction was carried out.
+The ML model to predict PCOS is created successfully.
