@@ -1,5 +1,5 @@
 ## Ex.No: 13 Learning – Use Supervised Learning  
-## DATE: 12/10/2024                                                                            
+## DATE: 24/10/2024                                                                            
 ## REGISTER NUMBER : 212222060281
 ## AIM: 
 To create a ML model using python to predict PCOS using Randomforest classifier.
