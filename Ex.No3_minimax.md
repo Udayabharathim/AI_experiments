@@ -15,41 +15,33 @@ Write a mini-max search algorithm to find the optimal value of MAX Player from t
 9. Stop the program. 
 
 ### Program:
-import math<br/>
-def minimax (curDepth, nodeIndex,<br/>
-             maxTurn, scores,<br/>
-             targetDepth):<br/>
-    # base case : targetDepth reached<br/>
-    if (curDepth == targetDepth):<br/>
-        return scores[nodeIndex]<br/>
-    if (maxTurn):<br/>
-        return max(minimax(curDepth + 1, nodeIndex * 2,<br/>
-                    False, scores, targetDepth),<br/>
-                   minimax(curDepth + 1, nodeIndex * 2 + 1,<br/>
-                    False, scores, targetDepth))<br/>
-     <br/>
-    else:<br/>
-        return min(minimax(curDepth + 1, nodeIndex * 2,<br/>
-                     True, scores, targetDepth),<br/>
-                   minimax(curDepth + 1, nodeIndex * 2 + 1,<br/>
-                     True, scores, targetDepth))<br/>
-     
+```
+import math
+
+def minimax(curDepth, nodeIndex, maxTurn, scores, targetDepth):
+    # Base case: target depth reached
+    if curDepth == targetDepth:
+        return scores[nodeIndex]
+
+    # Maximizing player's turn
+    if maxTurn:
+        return max(
+            minimax(curDepth + 1, nodeIndex * 2, False, scores, targetDepth),
+            minimax(curDepth + 1, nodeIndex * 2 + 1, False, scores, targetDepth)
+        )
+
+    # Minimizing player's turn
+    else:
+        return min(
+            minimax(curDepth + 1, nodeIndex * 2, True, scores, targetDepth),
+            minimax(curDepth + 1, nodeIndex * 2 + 1, True, scores, targetDepth)
+        )
+
 # Driver code
-scores = [3, 5, 2, 9, 12, 5, 23, 20]<br/>
-treeDepth = math.log(len(scores), 2) # calculate depth of node  log 8 (base 2) = 3)<br/>
-print("The optimal value is : ", end = "")<br/>
-print(minimax(0, 0, True, scores, treeDepth))<br/>
-
-
-
-
-
-
-
-
-
-
-
+scores = [3, 5, 2, 9, 12, 5, 23, 20]
+treeDepth = math.log2(len(scores))  # Calculate depth of tree
+print("The optimal value is:", minimax(0, 0, True, scores, treeDepth))
+```
 
 ### Output:
 
